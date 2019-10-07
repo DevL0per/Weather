@@ -14,6 +14,10 @@
 		F6EF9D252349C32F0080A2C8 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D242349C32F0080A2C8 /* WeatherViewController.swift */; };
 		F6EF9D272349D64A0080A2C8 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D262349D64A0080A2C8 /* CurrentWeather.swift */; };
 		F6EF9D292349D7900080A2C8 /* WeatherIconCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D282349D7900080A2C8 /* WeatherIconCases.swift */; };
+		F6EF9D4D234A65BB0080A2C8 /* APIManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D4C234A65BB0080A2C8 /* APIManagerProtocol.swift */; };
+		F6EF9D4F234A6F060080A2C8 /* APIWeatherManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D4E234A6F060080A2C8 /* APIWeatherManager .swift */; };
+		F6EF9D51234BC7DD0080A2C8 /* ErrorManager .swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D50234BC7DD0080A2C8 /* ErrorManager .swift */; };
+		F6EF9D53234BCFE70080A2C8 /* Extension + WeatherViewController .swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D52234BCFE70080A2C8 /* Extension + WeatherViewController .swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		F6EF9D242349C32F0080A2C8 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		F6EF9D262349D64A0080A2C8 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		F6EF9D282349D7900080A2C8 /* WeatherIconCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherIconCases.swift; sourceTree = "<group>"; };
+		F6EF9D4C234A65BB0080A2C8 /* APIManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManagerProtocol.swift; sourceTree = "<group>"; };
+		F6EF9D4E234A6F060080A2C8 /* APIWeatherManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIWeatherManager .swift"; sourceTree = "<group>"; };
+		F6EF9D50234BC7DD0080A2C8 /* ErrorManager .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ErrorManager .swift"; sourceTree = "<group>"; };
+		F6EF9D52234BCFE70080A2C8 /* Extension + WeatherViewController .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + WeatherViewController .swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,11 +71,23 @@
 				F6EF9D192349C2BF0080A2C8 /* Assets.xcassets */,
 				F6EF9D1B2349C2BF0080A2C8 /* LaunchScreen.storyboard */,
 				F6EF9D1E2349C2BF0080A2C8 /* Info.plist */,
-				F6EF9D242349C32F0080A2C8 /* WeatherViewController.swift */,
 				F6EF9D262349D64A0080A2C8 /* CurrentWeather.swift */,
 				F6EF9D282349D7900080A2C8 /* WeatherIconCases.swift */,
+				F6EF9D4C234A65BB0080A2C8 /* APIManagerProtocol.swift */,
+				F6EF9D4E234A6F060080A2C8 /* APIWeatherManager .swift */,
+				F6EF9D50234BC7DD0080A2C8 /* ErrorManager .swift */,
+				F6EF9D54234BCFED0080A2C8 /* WeatherViewController  */,
 			);
 			path = Weather;
+			sourceTree = "<group>";
+		};
+		F6EF9D54234BCFED0080A2C8 /* WeatherViewController  */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF9D242349C32F0080A2C8 /* WeatherViewController.swift */,
+				F6EF9D52234BCFE70080A2C8 /* Extension + WeatherViewController .swift */,
+			);
+			path = "WeatherViewController ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,7 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6EF9D4D234A65BB0080A2C8 /* APIManagerProtocol.swift in Sources */,
 				F6EF9D112349C2BE0080A2C8 /* AppDelegate.swift in Sources */,
+				F6EF9D4F234A6F060080A2C8 /* APIWeatherManager .swift in Sources */,
+				F6EF9D53234BCFE70080A2C8 /* Extension + WeatherViewController .swift in Sources */,
+				F6EF9D51234BC7DD0080A2C8 /* ErrorManager .swift in Sources */,
 				F6EF9D252349C32F0080A2C8 /* WeatherViewController.swift in Sources */,
 				F6EF9D272349D64A0080A2C8 /* CurrentWeather.swift in Sources */,
 				F6EF9D292349D7900080A2C8 /* WeatherIconCases.swift in Sources */,

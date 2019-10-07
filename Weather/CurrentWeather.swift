@@ -9,10 +9,18 @@
 import Foundation
 import UIKit
 
-struct CurrentWeater {
+struct CurrentWeater: Decodable {
     let temperature: Double
     let apparentTemperature: Double
     let humidity: Double
     let pressure: Double
-    let icon: UIImage
+    let icon: String
+    
+    func returnIconImage() -> UIImage {
+        return UIImage(named: icon) ?? UIImage()
+    }
+}
+
+struct Weather: Decodable {
+    let currently: CurrentWeater
 }

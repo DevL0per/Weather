@@ -24,6 +24,9 @@ class WeatherViewController: UIViewController {
     private var appearentTemperatureLabel = UILabel()
     
     private var refreshButton: UIButton!
+    
+    private lazy var weatherManager = APIWeatherManager(apiKey: "048f56ba3bfbe5071076e03130702999")
+    private let coordinates = Coordinates(latitude: 53.9, longitude: 27.5)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +41,25 @@ class WeatherViewController: UIViewController {
         
         configureRefreshButton()
         createStackView()
+        
+        weatherManager.fetchDataWeatherWith(coordinates: coordinates) { (APIResult) in
+            switch APIResult {
+            case .Success(let weather):
+                self.updateInterfaceWith(weather)
+            case .Error(let error as NSError):
+                self.showAlertController(title: "Error", message: "\(error.localizedDescription)")
+            }
+        }
     }
-
+    
+    private func updateInterfaceWith(_ weather: CurrentWeater) {
+        locationLabel.text = "Minsk"
+        pressureLabel.text = String(weather.pressure)
+        humidityLabel.text = String(weather.humidity)
+        temperatureLabel.text = String(weather.temperature)
+        appearentTemperatureLabel.text = String(weather.apparentTemperature)
+    }
+    
     private func configureLabel(for label: UILabel, text: String, sizeOffont: CGFloat) {
         label.text = text
         label.font = UIFont.systemFont(ofSize: sizeOffont)
