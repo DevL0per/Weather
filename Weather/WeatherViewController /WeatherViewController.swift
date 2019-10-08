@@ -12,7 +12,6 @@ class WeatherViewController: UIViewController {
     
     private var iconImage: UIImageView! = {
         let image = UIImageView()
-        image.image = UIImage(named: "sun")
         image.contentMode = .scaleAspectFit
         return image
     }()
@@ -25,6 +24,8 @@ class WeatherViewController: UIViewController {
     
     private var refreshButton: UIButton!
     
+    private var activityIndicator: UIActivityIndicatorView!
+    
     private lazy var weatherManager = APIWeatherManager(apiKey: "048f56ba3bfbe5071076e03130702999")
     private let coordinates = Coordinates(latitude: 53.9, longitude: 27.5)
 
@@ -33,16 +34,28 @@ class WeatherViewController: UIViewController {
 
         view.backgroundColor = #colorLiteral(red: 0.3450980392, green: 0.4470588235, blue: 0.5137254902, alpha: 1)
         
-        configureLabel(for: locationLabel, text: "kek", sizeOffont: 15)
-        configureLabel(for: pressureLabel, text: "kek", sizeOffont: 15)
-        configureLabel(for: humidityLabel, text: "kek", sizeOffont: 15)
-        configureLabel(for: temperatureLabel, text: "kek", sizeOffont: 60)
-        configureLabel(for: appearentTemperatureLabel, text: "kek", sizeOffont: 15)
+        //Configure Labels
+        configureLabel(for: locationLabel, sizeOffont: 15)
+        configureLabel(for: pressureLabel, sizeOffont: 15)
+        configureLabel(for: humidityLabel, sizeOffont: 15)
+        configureLabel(for: temperatureLabel, sizeOffont: 60)
+        configureLabel(for: appearentTemperatureLabel, sizeOffont: 15)
         
+        //Configure refreshButton
         configureRefreshButton()
+        // Configure ActivityIndicator
+        configureActivityIndicator()
+        
+        //Create StackView for all Elements
         createStackView()
         
+        //Get data from Api
+        getWeather()
+    }
+    
+    private func getWeather() {
         weatherManager.fetchDataWeatherWith(coordinates: coordinates) { (APIResult) in
+            self.activityIndicator.stopAnimating()
             switch APIResult {
             case .Success(let weather):
                 self.updateInterfaceWith(weather)
@@ -53,16 +66,18 @@ class WeatherViewController: UIViewController {
     }
     
     private func updateInterfaceWith(_ weather: CurrentWeater) {
-        locationLabel.text = "Minsk"
-        pressureLabel.text = String(weather.pressure)
-        humidityLabel.text = String(weather.humidity)
-        temperatureLabel.text = String(weather.temperature)
-        appearentTemperatureLabel.text = String(weather.apparentTemperature)
+        pressureLabel.text = "\(weather.pressure)mm"
+        humidityLabel.text = "\(weather.humidity)%"
+        locationLabel.text = "Mink"
+        temperatureLabel.text = "\(weather.temperature)℃"
+        iconImage.image = weather.returnIconImage()
+        appearentTemperatureLabel.text = "Feels like: \(weather.apparentTemperature)℃"
     }
     
-    private func configureLabel(for label: UILabel, text: String, sizeOffont: CGFloat) {
-        label.text = text
+    //MARK: - Config for elements
+    private func configureLabel(for label: UILabel, sizeOffont: CGFloat) {
         label.font = UIFont.systemFont(ofSize: sizeOffont)
+        label.text = ""
         label.textAlignment = .center
         label.textColor = .white
     }
@@ -71,6 +86,22 @@ class WeatherViewController: UIViewController {
         refreshButton = UIButton()
         refreshButton.setTitle("refresh", for: .normal)
         refreshButton.titleLabel?.textColor = .white
+        refreshButton.addTarget(self, action: #selector(refreshButtonTarget), for: .touchUpInside)
+    }
+    
+    @objc private func refreshButtonTarget() {
+        activityIndicator.startAnimating()
+        getWeather()
+    }
+    
+    private func configureActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView()
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        activityIndicator.startAnimating()
+        activityIndicator.hidesWhenStopped = true
     }
     
     private func createStackView() {

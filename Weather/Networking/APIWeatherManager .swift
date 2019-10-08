@@ -34,7 +34,6 @@ enum ForecastType {
     
     var request: URLRequest {
         let url = URL(string: path, relativeTo: baseURL)
-        print(url?.absoluteString)
         return URLRequest(url: url!)
     }
 }

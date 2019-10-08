@@ -30,10 +30,8 @@ extension APIManagerProtocol {
             }
             guard let data = data else { return }
             
-            print(data)
-            
             switch HTTPResponse.statusCode {
-            case 200...299:
+            case 200:
                 complition(data, HTTPResponse, nil)
             default:
                 complition(nil, HTTPResponse, nil)

@@ -47,6 +47,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F6916DFF234D256000E07C2D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF9D282349D7900080A2C8 /* WeatherIconCases.swift */,
+				F6EF9D262349D64A0080A2C8 /* CurrentWeather.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6916E00234D257300E07C2D /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F6EF9D4C234A65BB0080A2C8 /* APIManagerProtocol.swift */,
+				F6EF9D4E234A6F060080A2C8 /* APIWeatherManager .swift */,
+				F6EF9D50234BC7DD0080A2C8 /* ErrorManager .swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		F6EF9D042349C2BE0080A2C8 = {
 			isa = PBXGroup;
 			children = (
@@ -71,11 +90,8 @@
 				F6EF9D192349C2BF0080A2C8 /* Assets.xcassets */,
 				F6EF9D1B2349C2BF0080A2C8 /* LaunchScreen.storyboard */,
 				F6EF9D1E2349C2BF0080A2C8 /* Info.plist */,
-				F6EF9D262349D64A0080A2C8 /* CurrentWeather.swift */,
-				F6EF9D282349D7900080A2C8 /* WeatherIconCases.swift */,
-				F6EF9D4C234A65BB0080A2C8 /* APIManagerProtocol.swift */,
-				F6EF9D4E234A6F060080A2C8 /* APIWeatherManager .swift */,
-				F6EF9D50234BC7DD0080A2C8 /* ErrorManager .swift */,
+				F6916DFF234D256000E07C2D /* Model */,
+				F6916E00234D257300E07C2D /* Networking */,
 				F6EF9D54234BCFED0080A2C8 /* WeatherViewController  */,
 			);
 			path = Weather;
