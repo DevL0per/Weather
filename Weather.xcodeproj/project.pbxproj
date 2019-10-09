@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F6E8AD6E234E4BCC00EEEFF2 /* ParticlesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E8AD6D234E4BCC00EEEFF2 /* ParticlesView.swift */; };
 		F6EF9D112349C2BE0080A2C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D102349C2BE0080A2C8 /* AppDelegate.swift */; };
 		F6EF9D132349C2BE0080A2C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6EF9D122349C2BE0080A2C8 /* SceneDelegate.swift */; };
 		F6EF9D1A2349C2BF0080A2C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6EF9D192349C2BF0080A2C8 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F6E8AD6D234E4BCC00EEEFF2 /* ParticlesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesView.swift; sourceTree = "<group>"; };
 		F6EF9D0D2349C2BE0080A2C8 /* Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6EF9D102349C2BE0080A2C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F6EF9D122349C2BE0080A2C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				F6916DFF234D256000E07C2D /* Model */,
 				F6916E00234D257300E07C2D /* Networking */,
 				F6EF9D54234BCFED0080A2C8 /* WeatherViewController  */,
+				F6E8AD6D234E4BCC00EEEFF2 /* ParticlesView.swift */,
 			);
 			path = Weather;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				F6EF9D53234BCFE70080A2C8 /* Extension + WeatherViewController .swift in Sources */,
 				F6EF9D51234BC7DD0080A2C8 /* ErrorManager .swift in Sources */,
 				F6EF9D252349C32F0080A2C8 /* WeatherViewController.swift in Sources */,
+				F6E8AD6E234E4BCC00EEEFF2 /* ParticlesView.swift in Sources */,
 				F6EF9D272349D64A0080A2C8 /* CurrentWeather.swift in Sources */,
 				F6EF9D292349D7900080A2C8 /* WeatherIconCases.swift in Sources */,
 				F6EF9D132349C2BE0080A2C8 /* SceneDelegate.swift in Sources */,

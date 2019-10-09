@@ -27,7 +27,7 @@ class WeatherViewController: UIViewController {
     private var activityIndicator: UIActivityIndicatorView!
     
     private lazy var weatherManager = APIWeatherManager(apiKey: "048f56ba3bfbe5071076e03130702999")
-    private let coordinates = Coordinates(latitude: 53.9, longitude: 27.5)
+    private let coordinates = Coordinates(latitude: 53.907545, longitude: 27.557072)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,12 +66,15 @@ class WeatherViewController: UIViewController {
     }
     
     private func updateInterfaceWith(_ weather: CurrentWeater) {
+        view.backgroundColor = weather.getBackgroundColor()
         pressureLabel.text = "\(weather.pressure)mm"
         humidityLabel.text = "\(weather.humidity)%"
         locationLabel.text = "Mink"
-        temperatureLabel.text = "\(weather.temperature)℃"
-        iconImage.image = weather.returnIconImage()
-        appearentTemperatureLabel.text = "Feels like: \(weather.apparentTemperature)℃"
+        let temperature = weather.getTemperatureInСelsius(weather.temperature)
+        temperatureLabel.text = "\(temperature)℃"
+        iconImage.image = weather.getIconImage()
+        let appearentTemperature = weather.getTemperatureInСelsius(weather.apparentTemperature)
+        appearentTemperatureLabel.text = "Feels like: \(appearentTemperature)℃"
     }
     
     //MARK: - Config for elements

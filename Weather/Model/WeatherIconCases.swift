@@ -6,7 +6,6 @@
 //  Copyright © 2019 Роман Важник. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 enum WeatherIconCases: String {
@@ -21,7 +20,7 @@ enum WeatherIconCases: String {
     case partlyCloudyDay = "partly-cloudy-day"
     case partlyCloudyNight = "partly-cloudy-night"
     case unpredictedIcon = "unpredicted-icon"
-    
+
     init(value: String) {
         switch value {
         case "clear-day": self = .clearDay
@@ -37,9 +36,9 @@ enum WeatherIconCases: String {
         default: self = .unpredictedIcon
         }
     }
-    
+
     var iconImage: UIImage {
         return UIImage(named: self.rawValue)!
     }
-    
+
 }
