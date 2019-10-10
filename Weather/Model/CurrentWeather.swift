@@ -24,9 +24,17 @@ extension CurrentWeater {
     }
     
     func getBackgroundColor() -> UIColor {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
         switch icon {
-        case "clearDay", "cloudy", "partlyCloudyDay": return #colorLiteral(red: 0.3697364397, green: 0.6474654433, blue: 1, alpha: 1)
-        case "clearNight", "partlyCloudyNight": return #colorLiteral(red: 0.09491928347, green: 0.07393044397, blue: 0.09852871193, alpha: 1)
+        case "clear-day", "cloudy", "partly-cloudy-day":
+            if hour <= 20 && hour >= 8 {
+                return #colorLiteral(red: 0.3697364397, green: 0.6474654433, blue: 1, alpha: 1)
+            } else {
+                return #colorLiteral(red: 0.09491928347, green: 0.07393044397, blue: 0.09852871193, alpha: 1)
+            }
+        case "clear-night", "partly-cloudy-night": return #colorLiteral(red: 0.09491928347, green: 0.07393044397, blue: 0.09852871193, alpha: 1)
         case "fog", "rain", "sleet", "snow", "wind": return #colorLiteral(red: 0.3450980392, green: 0.4470588235, blue: 0.5137254902, alpha: 1)
         default: return #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         }

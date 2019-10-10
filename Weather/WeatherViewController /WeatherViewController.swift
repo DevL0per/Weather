@@ -11,13 +11,20 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+         return .lightContent
+     }
+    
+    var coordinates: Coordinates!
+    var locationLabel = UILabel()
+    let locationManager = CLLocationManager()
+    
     private var iconImage: UIImageView! = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit
         return image
     }()
     
-    private var locationLabel = UILabel()
     private var pressureLabel = UILabel()
     private var humidityLabel = UILabel()
     private var temperatureLabel = UILabel()
@@ -27,11 +34,8 @@ class WeatherViewController: UIViewController {
     private var activityIndicator: UIActivityIndicatorView!
     
     private lazy var weatherManager = APIWeatherManager(apiKey: "048f56ba3bfbe5071076e03130702999")
-    var coordinates: Coordinates!
     
     private var particlesView: ParticlesView!
-    
-    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +59,9 @@ class WeatherViewController: UIViewController {
         //Create StackView for all Elements
         createStackView()
         
-        //Get data from Api
-        //getWeather()
     }
     
-    private func getWeather() {
+    func getWeather() {
         weatherManager.fetchDataWeatherWith(coordinates: coordinates) { (APIResult) in
             self.activityIndicator.stopAnimating()
             switch APIResult {
@@ -75,12 +77,12 @@ class WeatherViewController: UIViewController {
         view.backgroundColor = weather.getBackgroundColor()
         pressureLabel.text = "\(weather.pressure)mm"
         humidityLabel.text = "\(weather.humidity)%"
-        locationLabel.text = "Mink"
         let temperature = weather.getTemperatureInСelsius(weather.temperature)
         temperatureLabel.text = "\(temperature)℃"
         iconImage.image = weather.getIconImage()
         let appearentTemperature = weather.getTemperatureInСelsius(weather.apparentTemperature)
         appearentTemperatureLabel.text = "Feels like: \(appearentTemperature)℃"
+        particlesView.startAnimating(type: weather.icon)
     }
     
     //MARK: - Config for elements
@@ -155,7 +157,8 @@ class WeatherViewController: UIViewController {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mainStackView)
         
-        mainStackView.topAnchor.constraint(equalTo: particlesView.topAnchor).isActive = true
+        mainStackView.topAnchor.constraint(equalTo: particlesView.topAnchor, constant: 10).isActive = true
+        //mainStackView.topAnchor.constraint(equalTo: particlesView.topAnchor).isActive = true
         mainStackView.bottomAnchor.constraint(equalTo: particlesView.bottomAnchor).isActive = true
         mainStackView.leftAnchor.constraint(equalTo: particlesView.leftAnchor).isActive = true
         mainStackView.rightAnchor.constraint(equalTo: particlesView.rightAnchor).isActive = true

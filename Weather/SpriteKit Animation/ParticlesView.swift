@@ -12,14 +12,28 @@ import SpriteKit
 class ParticlesView: SKView {
     
     override func didMoveToSuperview() {
-        
+        self.allowsTransparency = true
+        self.backgroundColor = .clear
+    }
+    
+    func startAnimating(type: String) {
         let scene = SKScene(size: self.frame.size)
         scene.backgroundColor = .clear
         
-        self.allowsTransparency = true
-        self.backgroundColor = .clear
-    
-        if let particles = SKEmitterNode(fileNamed: "ParticleScene.sks") {
+        var fileName: String?
+        
+        switch type {
+        case "rain":
+            fileName = "RainParticleScene.sks"
+        case "sleet":
+            fileName = "SleetParticleScene.sks"
+        case "snow":
+            fileName = "SnowParticleScene.sks"
+        default:
+            break
+        }
+        
+        if let fileName = fileName, let particles = SKEmitterNode(fileNamed: fileName) {
             particles.position = CGPoint(x: self.frame.width/2, y: self.frame.height)
             particles.particlePositionRange = CGVector(dx: self.frame.width, dy: 0)
             scene.addChild(particles)
