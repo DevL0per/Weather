@@ -23,10 +23,8 @@ class ParticlesView: SKView {
         var fileName: String?
         
         switch type {
-        case "rain":
+        case "rain", "sleet":
             fileName = "RainParticleScene.sks"
-        case "sleet":
-            fileName = "SleetParticleScene.sks"
         case "snow":
             fileName = "SnowParticleScene.sks"
         default:

@@ -39,8 +39,6 @@ class WeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = #colorLiteral(red: 0.3450980392, green: 0.4470588235, blue: 0.5137254902, alpha: 1)
         
         setupLocationManager()
         
@@ -68,6 +66,7 @@ class WeatherViewController: UIViewController {
             case .Success(let weather):
                 self.updateInterfaceWith(weather)
             case .Error(let error as NSError):
+                self.iconImage.image = UIImage(named: "unpredicted-icon")
                 self.showAlertController(title: "Error", message: "\(error.localizedDescription)")
             }
         }
