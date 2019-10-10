@@ -62,6 +62,7 @@ class WeatherViewController: UIViewController {
     func getWeather() {
         weatherManager.fetchDataWeatherWith(coordinates: coordinates) { (APIResult) in
             self.activityIndicator.stopAnimating()
+            self.refreshButton.isHidden = false
             switch APIResult {
             case .Success(let weather):
                 self.updateInterfaceWith(weather)
@@ -97,6 +98,7 @@ class WeatherViewController: UIViewController {
         refreshButton.setTitle("refresh", for: .normal)
         refreshButton.titleLabel?.textColor = .white
         refreshButton.addTarget(self, action: #selector(refreshButtonTarget), for: .touchUpInside)
+        refreshButton.isHidden = true
     }
     
     @objc private func refreshButtonTarget() {
